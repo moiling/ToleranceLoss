@@ -1,0 +1,7 @@
+tensorboardX~=2.1
+numpy~=1.19.2
+opencv-python
+torch
+torchvision~=0.8.1
+psutil~=5.8.0
+pillow~=8.1.0
