@@ -6,6 +6,7 @@ import torch
 
 from networks.loss import matting_loss
 from networks.mnet.dimnet import DIMNet
+from networks.tnet.AimNet import AimNet
 from networks.tnet.gfm import GFM
 from networks.tnet.mobilenet_wrapper import MobileNetWrapper
 from networks.tnet.pspnet import PSPNet
@@ -25,6 +26,7 @@ class MattingModel:
     losses = []
 
     logger = logging.getLogger('MattingModel')
+    logger.setLevel(logging.DEBUG)
 
     def __init__(self, lr, cpu=False, mode='t-net', model='p'):
         self.cpu = cpu
@@ -35,8 +37,10 @@ class MattingModel:
             self.t_net = PSPNet(pretrain=True)
         elif model == 'm':
             self.t_net = MobileNetWrapper(pretrain=False)
-        else:
+        elif model == 'g':
             self.t_net = GFM(pretrain=True)
+        else:
+            self.t_net = AimNet(pretrained=True)
 
         self.m_net = DIMNet()
 
@@ -186,7 +190,8 @@ class MattingModel:
             if not best_model.startswith(self.mode):
                 checkpoint['losses'] = [1e5]
                 checkpoint['epoch'] = 0
-                checkpoint['optimizer_state_dict'] = None
+                checkpoint['t_optimizer'] = None
+                checkpoint['m_optimizer'] = None
             return checkpoint
 
         return None

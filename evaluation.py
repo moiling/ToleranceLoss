@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 if __name__ == '__main__':
-    pred_trimap_dir = 'data/base_normal'
+    pred_trimap_dir = 'C:/Users/moi/Desktop/ptp1/tolerance_perfect_best-s-2000-lr-1e-6'
     gt_perfect_trimap_dir = 'D:/Dataset/Matting/AIM-500/perfect_trimap'
     gt_normal_trimap_dir = 'D:/Dataset/Matting/AIM-500/trimap'
 

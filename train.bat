@@ -26,11 +26,11 @@ set patch_size=320
 set sample=2000
 set epoch=100
 
-set batch=2
+set batch=4
 
-set t=
+set t=True
 
-set model=g
+set model=a
 
 set lr=1e-6
 

@@ -13,7 +13,8 @@ U   ×   ×   √         U    U       F+B
 ```
 
 ```
-tolerance_loss = - 1/N \Sum_i^N [M_F\log(p_F+p_F)+M_b\log(p_F+p_F)+M_u\log(p_U)]
+tolerance_loss = - 1/N \Sum_i^N [M_F\log(p_F+p_U)+M_B\log(p_F+p_U)+M_U\log(p_U)]
+
 M_x means the mask of region x labeled in trimap.
 p_x means the probability of region x (after softmax).
 ```
